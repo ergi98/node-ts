@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve:production": "NODE_ENV=production node dist/index.js",
-    "serve": "NODE_ENV=development nodemon src/index.ts",
     "build": "tsc -p .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "nodemon",
+    "serve:production": "NODE_ENV=production node -r ts-node/register/transpile-only -r tsconfig-paths/register dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --fix \"./src/**/*.{js,ts,json}\"",
+    "format": "prettier --write \"./src/**/*.{js,ts,json,md}\""
   },
   "repository": {
     "type": "git",
@@ -27,7 +29,10 @@
     "@typescript-eslint/parser": "^5.28.0",
     "dotenv": "^16.0.1",
     "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "nodemon": "^2.0.16",
     "prettier": "^2.7.1",
     "ts-node": "^10.8.1",

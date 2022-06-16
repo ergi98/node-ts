@@ -1,18 +1,21 @@
 import path from "path";
-import dotenv from "dotenv";
+import { config } from "dotenv";
 
-import express, { Application, Request, Response, NextFunction } from "express";
+import express, { Application, Request, Response } from "express";
+import { test } from "@src/test";
 
-dotenv.config({
-  path: path.resolve(__dirname, "..", `.env.${process.env.NODE_ENV}`),
-});
+const PORT = parseInt(process.env.PORT ?? "5050");
+const NODE_ENV = process.env.NODE_ENV ?? "development";
 
 const app: Application = express();
 
-app.get("/", (req: Request, res: Response, next: NextFunction) => {
-  res.send("Hello");
+config({
+  path: path.resolve(__dirname, "..", `.env.${NODE_ENV}`),
 });
 
-app.listen(process.env.PORT, () =>
-  console.log(`Listening on port ${process.env.PORT}`)
-);
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello");
+  test();
+});
+
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
