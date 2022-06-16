@@ -1,5 +1,5 @@
-import dotenv from "dotenv";
 import path from "path";
+import dotenv from "dotenv";
 
 import express, { Application, Request, Response, NextFunction } from "express";
 
