@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import express, { Application, Request, Response, NextFunction } from "express";
 
 dotenv.config({
-  path: path.resolve(__dirname, "..", `env.${process.env.NODE_ENV}`),
+  path: path.resolve(__dirname, "..", `.env.${process.env.NODE_ENV}`),
 });
 
 const app: Application = express();
